@@ -1,4 +1,3 @@
-// app/templates/page.tsx
 'use client';
 
 import { useState, MouseEvent } from 'react';
@@ -8,7 +7,6 @@ import { motion } from 'framer-motion';
 
 import img1 from '@/public/img1.jpg';
 import img3 from '@/public/img3.jpg';
-import img4 from '@/public/img4.jpg';
 import img5 from '@/public/img5.jpg';
 import img6 from '@/public/img6.jpg';
 import img7 from '@/public/img7.jpg';
