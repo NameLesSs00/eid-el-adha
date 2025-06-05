@@ -360,7 +360,7 @@ export default function CreateCardPage() {
             </select>
             {overlayChoice === 'above' && (
               <p className="text-sm text-gray-400 mt-1">
-                اختر 'نص على الصورة' لتمكين هذا الخيار
+                اختر &aposنص على الصورة&apos لتمكين هذا الخيار
               </p>
             )}
           </motion.div>
