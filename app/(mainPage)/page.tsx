@@ -1,22 +1,20 @@
-// app/page.tsx
-'use client';
+"use client";
 
-import Link from 'next/link';
-import SlideImages from '@/components/SlideImages';
-import { motion } from 'framer-motion';
+import Link from "next/link";
+import SlideImages from "@/components/SlideImages";
+import { motion } from "framer-motion";
 
 export default function HomePage() {
   return (
     <motion.main
-      className="bg-[#1B1B1B] min-h-screen p-6 text-[#FFD700]"
+      className="bg-[#faf8f5] min-h-screen p-6 text-[#4d4d3a]"
       dir="rtl"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      {/* Greeting (animated on mount) */}
       <motion.section
-        className="text-center mb-10"
+        className="text-center mb-10 "
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3, duration: 0.6 }}
@@ -24,11 +22,9 @@ export default function HomePage() {
         <SlideImages />
       </motion.section>
 
-      {/* Sections grid */}
       <div className="grid gap-8">
-        {/* Templates Section */}
         <motion.section
-          className="bg-[#1A237E] bg-opacity-20 p-4 rounded-lg"
+          className="bg-[#dfdacf] bg-opacity-80 p-4 rounded-lg"
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -44,7 +40,7 @@ export default function HomePage() {
             بطاقات جاهزة
           </motion.h3>
           <motion.p
-            className="mb-4"
+            className="mb-4 text-xl"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -54,7 +50,7 @@ export default function HomePage() {
           </motion.p>
           <Link href="/templates">
             <motion.button
-              className="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-4 py-2 rounded"
+              className="bg-[#483C32] hover:bg-[#3b322a] text-[#fdf6e3] font-semibold px-4 py-2 rounded transition"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0 }}
@@ -67,9 +63,8 @@ export default function HomePage() {
           </Link>
         </motion.section>
 
-        {/* Create Card Section */}
         <motion.section
-          className="bg-[#1A237E] bg-opacity-20 p-4 rounded-lg"
+          className="bg-[#dfdacf] bg-opacity-80 p-4 rounded-lg"
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -85,7 +80,7 @@ export default function HomePage() {
             إنشاء بطاقة
           </motion.h3>
           <motion.p
-            className="mb-4"
+            className="mb-4 text-xl"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -95,7 +90,7 @@ export default function HomePage() {
           </motion.p>
           <Link href="/create">
             <motion.button
-              className="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-4 py-2 rounded"
+              className="bg-[#483C32] hover:bg-[#3b322a] text-[#fdf6e3] font-semibold px-4 py-2 rounded transition"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0 }}
@@ -108,9 +103,8 @@ export default function HomePage() {
           </Link>
         </motion.section>
 
-        {/* Developer Message Section */}
         <motion.section
-          className="bg-[#1A237E] bg-opacity-20 p-4 rounded-lg"
+          className="bg-[#dfdacf] bg-opacity-80 p-4 rounded-lg"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -126,17 +120,18 @@ export default function HomePage() {
             رسالة من المطور
           </motion.h3>
           <motion.p
-            className="mb-4"
+            className="mb-4 text-xl"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.6, duration: 0.4 }}
           >
-            تعرف على سبب إنشاء هذا الموقع وشاركنا التهنئة بروح العيد.
+            هذه رسالة من الشخص الذي قام بإنشاء هذه الصفحة، وأود أن أشارككم بعض
+            النقاط الهامة التي ينبغي أخذها في الاعتبار أو التعرف عليها.{" "}
           </motion.p>
           <Link href="/message">
             <motion.button
-              className="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-4 py-2 rounded"
+              className="bg-[#483C32] hover:bg-[#3b322a] text-[#fdf6e3] font-semibold px-4 py-2 rounded transition"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0 }}

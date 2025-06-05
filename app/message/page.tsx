@@ -1,20 +1,19 @@
-'use client';
+"use client";
 
-import { Star } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { Star } from "lucide-react";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 export default function MessagePage() {
   const [hovering, setHovering] = useState(false);
 
   return (
     <main
-      className="min-h-screen bg-[#1B1B1B] text-[#FFD700] flex flex-col items-center justify-center text-center space-y-10"
+      className="min-h-screen bg-[#faf8f5] text-[#4d4d3a] flex flex-col items-center justify-center text-center space-y-10"
       dir="rtl"
     >
-      {/* Main message section */}
       <motion.div
-        className="w-full bg-[#1A237E] py-10 px-4"
+        className="w-full bg-[#dfdacf] bg-opacity-80 py-10 px-4 rounded-lg"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -22,14 +21,17 @@ export default function MessagePage() {
         <div className="max-w-2xl mx-auto">
           <h1 className="text-5xl font-bold mb-4">رسالة خاصة بمناسبة العيد</h1>
           <p className="text-xl leading-loose">
-            هذا النص مجرد مثال مؤقت. سيتم تحديث هذه الرسالة لاحقًا لتحتوي على كلمات من القلب، تهنئة بعيد الأضحى المبارك، وتعبير عن فرحة العيد وأهمية مشاركة اللحظات الجميلة مع الأحبة.
+            تقريبا ده الجزء الوحيد الي هيكون باللهجة المصرية بس ما علينا انبسط
+            اوي و انا بعمل البروجيكت ده ايوه اخد مني وقت بس اتعلمت حاجات كتير ده
+            غير برضو أنه وفر عليا وقت اعيد علي كل الناس دي 🙂 اتمني يكون عيد
+            سعيد عليكم و بس كده سلاممممممم ايوه صح حاجه اخيره This website was
+            made with love 💜💖
           </p>
         </div>
       </motion.div>
 
-      {/* About the site section */}
       <motion.div
-        className="w-full bg-[#1A237E] py-10 px-4"
+        className="w-full bg-[#dfdacf] bg-opacity-80 py-10 px-4 rounded-lg"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.3 }}
@@ -37,14 +39,13 @@ export default function MessagePage() {
         <div className="max-w-xl mx-auto">
           <h2 className="text-3xl font-semibold mb-4">حول هذا الموقع</h2>
           <p className="text-lg leading-loose">
-            تم إنشاء هذا الموقع باستخدام Next.js، TypeScript، وTailwind CSS. المزيد من المعلومات والتفاصيل سيتم إضافتها قريبًا.
+            تم إنشاء هذا الموقع باستخدام Next.js، TypeScript، و Tailwind CSS.
           </p>
         </div>
       </motion.div>
 
-      {/* Creator section */}
       <motion.div
-        className="w-full bg-[#1A237E] py-6 px-4"
+        className="w-full bg-[#dfdacf] bg-opacity-80 py-6 px-4 rounded-lg"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.6 }}
@@ -54,14 +55,14 @@ export default function MessagePage() {
           onMouseEnter={() => setHovering(true)}
           onMouseLeave={() => setHovering(false)}
         >
-          {/* Name + Star */}
           <p className="text-lg leading-loose flex items-center gap-2 cursor-pointer">
             Created by Paul Sami 🌙
-            <motion.span animate={{ rotate: hovering ? 360 : 0 }} transition={{ duration: 0.6 }}>
-            </motion.span>
+            <motion.span
+              animate={{ rotate: hovering ? 360 : 0 }}
+              transition={{ duration: 0.6 }}
+            />
           </p>
 
-          {/* Spinning Stars Row */}
           <div className="flex gap-2 mt-1">
             {[...Array(10)].map((_, idx) => (
               <motion.div
@@ -69,7 +70,7 @@ export default function MessagePage() {
                 animate={{ rotate: hovering ? 360 : 0 }}
                 transition={{ duration: 0.6 }}
               >
-                <Star size={18} className="text-[#FFD700] cursor-pointer" />
+                <Star size={18} className="text-[#4d4d3a] cursor-pointer" />
               </motion.div>
             ))}
           </div>

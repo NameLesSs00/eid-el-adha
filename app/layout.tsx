@@ -22,13 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={cairo.className}>
-      <body className=" bg-[#1B1B1B]">
+      <body className=" bg-[#faf8f5]">
         <Navbar/>
         {children}
       </body>
     </html>
   );
 }
-// #FFD700
-// #009688
-// #1A237E

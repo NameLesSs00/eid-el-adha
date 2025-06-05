@@ -1,13 +1,15 @@
-// app/create/page.tsx
 'use client';
 
 import { useState, ChangeEvent } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import img1 from '@/public/img1.jpg';
-import img2 from '@/public/img2.png';
-import img3 from '@/public/img3.jpeg';
 
+import img1 from '@/public/img1.jpg';
+import img3 from '@/public/img3.jpg';
+import img4 from '@/public/img4.jpg';
+import img5 from '@/public/img5.jpg';
+import img6 from '@/public/img6.jpg';
+import img7 from '@/public/img7.jpg';
 type BgColorKey =
   | 'white'
   | 'black'
@@ -46,12 +48,11 @@ type OverlayChoice = 'above' | 'onImage';
 type TextPosition = 'center' | 'topRight' | 'topCenter';
 
 export default function CreateCardPage() {
-  // State variables for all form inputs
   const [text, setText] = useState('');
   const [overlayChoice, setOverlayChoice] = useState<OverlayChoice>('onImage');
-  const [bgColor, setBgColor] = useState<BgColorKey>('white');
-  const [textColor, setTextColor] = useState<TextColorKey>('black');
-  const [selectedImage, setSelectedImage] = useState<typeof img1 | typeof img2 | typeof img3 | null>(null);
+  const [bgColor, setBgColor] = useState<BgColorKey>('gray');
+  const [textColor, setTextColor] = useState<TextColorKey>('white');
+  const [selectedImage, setSelectedImage] = useState<typeof img1 | typeof img3 | typeof img4 | typeof img5 | typeof img6 | typeof img7 | null>(null);
   const [customImageUrl, setCustomImageUrl] = useState<string | null>(null);
   const [textPosition, setTextPosition] = useState<TextPosition>('center');
   const [showModal, setShowModal] = useState(false);
@@ -157,24 +158,22 @@ export default function CreateCardPage() {
 
   return (
     <motion.main
-      className="min-h-screen bg-[#1B1B1B] text-[#FFD700] p-6"
+      className="min-h-screen bg-[#faf8f5] text-[#4d4d3a] p-6"
       dir="rtl"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
       <div className="flex flex-col md:flex-row gap-6">
-        {/* Right Sidebar: form controls */}
         <motion.div
-          className="md:w-1/3 bg-[#1A237E] p-6 rounded-xl space-y-6"
+          className="md:w-1/3 bg-[#dfdacf] bg-opacity-80 p-6 rounded-lg space-y-6"
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ delay: 0.2, duration: 0.5 }}
         >
-          {/* Title */}
           <motion.h2
-            className="text-2xl font-semibold mb-4"
+            className="text-2xl font-semibold mb-4 text-[#4d4d3a]"
             initial={{ scale: 0.9, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
@@ -183,74 +182,72 @@ export default function CreateCardPage() {
             خيارات البطاقة
           </motion.h2>
 
-          {/* Text input */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.4 }}
           >
-            <label className="block mb-2">أدخل النص (حتى {charLimit} حرفًا)</label>
+            <label className="block mb-2 text-[#4d4d3a]">
+              أدخل النص (حتى {charLimit} حرفًا)
+            </label>
             <input
               type="text"
               value={text}
               onChange={(e) => setText(e.target.value)}
               maxLength={charLimit}
-              className="w-full p-2 rounded bg-gray-700 text-white"
+              className="w-full p-2 rounded bg-gray-200 text-[#4d4d3a] placeholder:text-gray-500"
               placeholder="اكتب هنا..."
               dir="auto"
             />
           </motion.div>
 
-          {/* Overlay choice */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.5, duration: 0.4 }}
           >
-            <p className="mb-2">أين تريد أن يظهر النص؟</p>
-            <label className="inline-flex items-center mr-4">
+            <p className="mb-2 text-[#4d4d3a]">أين تريد أن يظهر النص؟</p>
+            <label className="inline-flex items-center mr-4 text-[#4d4d3a]">
               <input
                 type="radio"
                 name="overlay"
                 value="above"
                 checked={overlayChoice === 'above'}
                 onChange={() => setOverlayChoice('above')}
-                className="accent-emerald-500"
+                className="accent-[#4d4d3a]"
               />
               <span className="mr-2">نص فوق الصورة</span>
             </label>
-            <label className="inline-flex items-center">
+            <label className="inline-flex items-center text-[#4d4d3a]">
               <input
                 type="radio"
                 name="overlay"
                 value="onImage"
                 checked={overlayChoice === 'onImage'}
                 onChange={() => setOverlayChoice('onImage')}
-                className="accent-emerald-500"
+                className="accent-[#4d4d3a]"
               />
               <span className="mr-2">نص على الصورة</span>
             </label>
           </motion.div>
 
-          {/* Background color swatches */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.6, duration: 0.4 }}
           >
-            <p className="mb-2">لون الخلفية</p>
+            <p className="mb-2 text-[#4d4d3a]">لون الخلفية</p>
             <div className="flex flex-wrap gap-3">
               {bgOptions.map((c) => (
                 <motion.div
                   key={c}
                   onClick={() => setBgColor(c)}
                   style={{ backgroundColor: bgColorMap[c] }}
-                  className={`w-8 h-8 rounded-full cursor-pointer border-2 ${
-                    bgColor === c ? 'border-emerald-500' : 'border-transparent'
-                  }`}
+                  className={`w-8 h-8 rounded-full cursor-pointer border-2 ${bgColor === c ? 'border-[#4d4d3a]' : 'border-transparent'
+                    }`}
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.2 }}
                 />
@@ -258,23 +255,21 @@ export default function CreateCardPage() {
             </div>
           </motion.div>
 
-          {/* Text color swatches */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.7, duration: 0.4 }}
           >
-            <p className="mb-2">لون النص</p>
+            <p className="mb-2 text-[#4d4d3a]">لون النص</p>
             <div className="flex flex-wrap gap-3">
               {textOptions.map((c) => (
                 <motion.div
                   key={c}
                   onClick={() => setTextColor(c)}
                   style={{ backgroundColor: textColorMap[c] }}
-                  className={`w-8 h-8 rounded-full cursor-pointer border-2 ${
-                    textColor === c ? 'border-emerald-500' : 'border-transparent'
-                  }`}
+                  className={`w-8 h-8 rounded-full cursor-pointer border-2 ${textColor === c ? 'border-[#4d4d3a]' : 'border-transparent'
+                    }`}
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.2 }}
                 />
@@ -282,25 +277,23 @@ export default function CreateCardPage() {
             </div>
           </motion.div>
 
-          {/* Predefined image choices */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.8, duration: 0.4 }}
           >
-            <p className="mb-2">اختر صورة من الخيارات</p>
+            <p className="mb-2 text-[#4d4d3a]">اختر صورة من الخيارات</p>
             <div className="flex gap-2">
-              {[img1, img2, img3].map((img, idx) => (
+              {[img1, img3, img4, img5, img6, img7].map((img, idx) => (
                 <motion.button
                   key={idx}
                   onClick={() => {
                     setSelectedImage(img);
                     setCustomImageUrl(null);
                   }}
-                  className={`border-2 ${
-                    selectedImage === img ? 'border-emerald-500' : 'border-transparent'
-                  } rounded overflow-hidden`}
+                  className={`border-2 ${selectedImage === img ? 'border-[#4d4d3a]' : 'border-transparent'
+                    } rounded overflow-hidden`}
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.2 }}
                 >
@@ -316,57 +309,53 @@ export default function CreateCardPage() {
             </div>
           </motion.div>
 
-          {/* Upload custom image */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.9, duration: 0.4 }}
           >
-            <label className="block mb-2">أضف صورة من جهازك</label>
+            <label className="block mb-2 text-[#4d4d3a]">أضف صورة من جهازك</label>
             <input
               type="file"
               accept="image/*"
               onChange={handleCustomImage}
-              className="text-sm text-white"
+              className="text-sm text-[#4d4d3a]"
             />
           </motion.div>
 
-          {/* Text position */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 1.0, duration: 0.4 }}
           >
-            <p className="mb-2 text-white">موضع النص عند العرض على الصورة</p>
+            <p className="mb-2 text-[#4d4d3a]">موضع النص عند العرض على الصورة</p>
             <select
               value={textPosition}
               onChange={(e) => setTextPosition(e.target.value as TextPosition)}
-              className={`w-full p-2 rounded text-white bg-gray-700 ${
-                overlayChoice === 'above' ? 'opacity-50 cursor-not-allowed' : ''
-              }`}
+              className={`w-full p-2 rounded text-[#4d4d3a] bg-gray-200 ${overlayChoice === 'above' ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
               disabled={overlayChoice === 'above'}
             >
-              <option value="center" className="text-black">
+              <option value="center" className="text-[#4d4d3a]">
                 في المنتصف
               </option>
-              <option value="topRight" className="text-black">
+              <option value="topRight" className="text-[#4d4d3a]">
                 في أعلى اليمين
               </option>
-              <option value="topCenter" className="text-black">
+              <option value="topCenter" className="text-[#4d4d3a]">
                 في أعلى المنتصف
               </option>
             </select>
             {overlayChoice === 'above' && (
               <p className="text-sm text-gray-400 mt-1">
-                اختر &aposنص على الصورة&apos لتمكين هذا الخيار
+                اختر &apos;نص على الصورة&apos; لتمكين هذا الخيار
               </p>
             )}
           </motion.div>
         </motion.div>
 
-        {/* Left Preview Area */}
         <motion.div
           className="md:w-2/3 space-y-6"
           initial={{ opacity: 0, x: 20 }}
@@ -374,16 +363,14 @@ export default function CreateCardPage() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ delay: 0.2, duration: 0.5 }}
         >
-          {/* Card preview container */}
           <motion.div
-            className="relative w-full h-[550px] rounded-xl overflow-hidden"
+            className="relative w-full h-[550px] rounded-lg overflow-hidden"
             style={{ backgroundColor: bgColorMap[bgColor] }}
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ delay: 0.3, duration: 0.5 }}
           >
-            {/* If “text above image” is selected */}
             {overlayChoice === 'above' && text && (
               <motion.div
                 className="absolute top-0 left-0 right-0 h-20 p-4 z-10"
@@ -402,11 +389,9 @@ export default function CreateCardPage() {
               </motion.div>
             )}
 
-            {/* Image box */}
             <motion.div
-              className={`absolute left-0 right-0 rounded-lg overflow-hidden ${
-                overlayChoice === 'above' ? 'top-20 bottom-0 m-0' : 'inset-0 m-4'
-              }`}
+              className={`absolute left-0 right-0 rounded-lg overflow-hidden ${overlayChoice === 'above' ? 'top-20 bottom-0 m-0' : 'inset-0 m-4'
+                }`}
               initial={{ opacity: 0.8 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -430,7 +415,6 @@ export default function CreateCardPage() {
                 </motion.div>
               )}
 
-              {/* If “text on image” is selected */}
               {overlayChoice === 'onImage' && text && (
                 <motion.div
                   className={`${getPositionClasses()} px-2 z-10`}
@@ -454,7 +438,7 @@ export default function CreateCardPage() {
           {/* “Done” button */}
           <motion.button
             onClick={() => setShowModal(true)}
-            className="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-6 py-2 rounded"
+            className="bg-[#483C32] hover:bg-[#3b322a] text-[#fdf6e3] font-semibold px-6 py-2 rounded transition"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -467,7 +451,6 @@ export default function CreateCardPage() {
         </motion.div>
       </div>
 
-      {/* Modal for taking a screenshot */}
       {showModal && (
         <motion.div
           className="fixed inset-0 bg-black/50 flex items-center justify-center z-20 p-6"
@@ -477,25 +460,23 @@ export default function CreateCardPage() {
           transition={{ duration: 0.4 }}
         >
           <motion.div
-            className="relative w-[90%] max-w-xl h-[800px] bg-[#1A237E] rounded-xl overflow-hidden flex flex-col"
+            className="relative w-[90%] max-w-xl h-[800px] bg-[#dfdacf] bg-opacity-80 rounded-lg overflow-hidden flex flex-col"
             onClick={(e) => e.stopPropagation()}
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            {/* Modal Header (Arabic “Take a screenshot”) */}
             <motion.div
               className="p-6"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.4 }}
             >
-              <h1 className="text-3xl font-bold text-center text-white">
+              <h1 className="text-3xl font-bold text-center text-[#4d4d3a]">
                 خذ لقطة شاشة
               </h1>
             </motion.div>
 
-            {/* Card preview inside modal */}
             <motion.div
               className="relative flex-1"
               initial={{ opacity: 0 }}
@@ -520,7 +501,6 @@ export default function CreateCardPage() {
                 </motion.div>
               )}
 
-              {/* If “text above image” is selected */}
               {overlayChoice === 'above' && text && (
                 <motion.div
                   className="absolute top-0 left-0 right-0 h-24 p-6 z-10"
@@ -538,7 +518,6 @@ export default function CreateCardPage() {
                 </motion.div>
               )}
 
-              {/* If “text on image” is selected */}
               {overlayChoice === 'onImage' && text && (
                 <motion.div
                   className={`${getPositionClasses()} px-4 z-10`}
@@ -556,7 +535,6 @@ export default function CreateCardPage() {
                 </motion.div>
               )}
 
-              {/* If “text above image” but no image */}  
               {overlayChoice === 'above' && !selectedImage && !customImageUrl && text && (
                 <motion.div
                   className="absolute top-0 left-0 right-0 h-24 p-6 z-10"
@@ -578,6 +556,9 @@ export default function CreateCardPage() {
           </motion.div>
         </motion.div>
       )}
+
     </motion.main>
+
+
   );
 }
